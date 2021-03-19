@@ -1,10 +1,10 @@
 package com.example.androiddevchallenge.domain.bridge
 
-import com.example.androiddevchallenge.domain.entity.location.City
+import com.example.androiddevchallenge.domain.entity.location.Location
 
-import com.example.androiddevchallenge.common.Result
+import kotlinx.coroutines.flow.Flow
 
 interface LocationRepository {
 
-    fun searchPlaces(query: String): Result<List<City>>
+    fun searchPlaces(query: String): Flow<List<Location>>
 }
