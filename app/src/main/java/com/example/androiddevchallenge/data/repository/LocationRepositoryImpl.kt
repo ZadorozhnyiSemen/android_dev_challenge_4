@@ -19,10 +19,10 @@ class LocationRepositoryImpl(
 ): LocationRepository {
 
     override fun searchPlaces(query: String): Flow<List<Location>> = flow {
-        emit(locationMapper.mapToDomain(cache.load(query)))
+        emit(locationMapper.mapListToDomain(cache.load(query)))
         val locations = api.getLocationsByName(query)
         cache.save(query, locations)
         delay(500)
-        emit(locationMapper.mapToDomain(locations))
+        emit(locationMapper.mapListToDomain(locations))
     }.flowOn(ioDispatcher)
 }
