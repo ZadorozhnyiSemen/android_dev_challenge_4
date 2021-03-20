@@ -3,13 +3,21 @@ package com.example.androiddevchallenge.data.mappers
 import com.example.androiddevchallenge.data.entity.DataLocation
 import com.example.androiddevchallenge.domain.entity.location.Location
 
-class LocationMapper: Mapper<List<DataLocation>, List<Location>> {
+class LocationMapper: Mapper<DataLocation, Location> {
 
-    override fun mapToDomain(dataValue: List<DataLocation>): List<Location> {
-        return dataValue.map { Location(it.name, it.lat, it.lng) }
+    override fun mapToDomain(dataValue: DataLocation): Location {
+        return Location(dataValue.name, dataValue.country, dataValue.lat, dataValue.lng)
     }
 
-    override fun mapToData(domainValue: List<Location>): List<DataLocation> {
-        return domainValue.map { DataLocation(it.name, it.latitude, it.longitude) }
+    override fun mapToData(domainValue: Location): DataLocation {
+        return DataLocation(domainValue.name, domainValue.country, domainValue.latitude, domainValue.longitude)
+    }
+
+    override fun mapListToDomain(dataValue: List<DataLocation>): List<Location> {
+        return dataValue.map { mapToDomain(it) }
+    }
+
+    override fun mapListToData(domainValue: List<Location>): List<DataLocation> {
+        return domainValue.map { mapToData(it) }
     }
 }
