@@ -1,6 +1,5 @@
 package com.example.androiddevchallenge.domain.usecase.location
 
-import com.example.androiddevchallenge.common.Result
 import com.example.androiddevchallenge.domain.bridge.LocationRepository
 import com.example.androiddevchallenge.domain.entity.location.Location
 import kotlinx.coroutines.flow.Flow
