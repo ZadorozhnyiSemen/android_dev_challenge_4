@@ -18,6 +18,7 @@ buildscript {
     ext.kotlin_version = '1.4.31'
     ext.compose_version = '1.0.0-beta02'
     ext.coroutines_version = '1.4.2'
+    ext.objectboxVersion = '2.9.1'
 
     repositories {
         google()
@@ -25,6 +26,7 @@ buildscript {
     }
 
     dependencies {
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
         classpath 'com.android.tools.build:gradle:7.0.0-alpha09'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
