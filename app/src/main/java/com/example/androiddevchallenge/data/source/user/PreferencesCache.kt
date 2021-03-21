@@ -1,8 +1,9 @@
 package com.example.androiddevchallenge.data.source.user
 
 import com.example.androiddevchallenge.data.entity.DataLocation
+import javax.inject.Inject
 
-class PreferencesCache {
+class PreferencesCache @Inject constructor() {
     private val locationCache = mutableSetOf<DataLocation>()
 
     fun getLocations(): List<DataLocation> {

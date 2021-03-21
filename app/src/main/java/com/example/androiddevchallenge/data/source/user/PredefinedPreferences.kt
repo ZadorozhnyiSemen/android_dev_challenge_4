@@ -1,8 +1,9 @@
 package com.example.androiddevchallenge.data.source.user
 
 import com.example.androiddevchallenge.data.entity.DataLocation
+import javax.inject.Inject
 
-class PredefinedPreferences {
+class PredefinedPreferences @Inject constructor() {
     fun get(): List<DataLocation> {
         return listOf(
             DataLocation("Tallinn", "Estonia", lat = 59.4370f, lng = 24.7536f),

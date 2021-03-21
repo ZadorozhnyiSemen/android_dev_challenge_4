@@ -9,5 +9,25 @@
       or implied. See the License for the specific language governing permissions and limitations under
       the License.
       -->
-    <string name="app_name">AndroidDevChallenge</string>
+    <string name="app_name">Stormy application</string>
+    <string name="cd_icon_hourly">Hourly forecast</string>
+    <string name="cd_icon_daily">Daily forecast</string>
+    <string name="cd_icon_close">Close weather details</string>
+    <string name="cd_icon_close_search">Close search</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="saturday">Saturday</string>
+    <string name="friday">Friday</string>
+    <string name="sunday">Sunday</string>
+    <string name="cd_weather_sun">Sunny</string>
+    <string name="cd_weather_rain">Rain</string>
+    <string name="cd_weather_snow">Snow</string>
+    <string name="cd_weather_clouds">Cloudy</string>
+    <string name="cd_selected">currently selected</string>
+    <string name="cd_not_selected">double tap to select</string>
+    <string name="cd_weather_details">Weather details</string>
 </resources>

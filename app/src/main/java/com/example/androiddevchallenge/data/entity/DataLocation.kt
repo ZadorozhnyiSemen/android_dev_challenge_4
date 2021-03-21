@@ -11,5 +11,5 @@ data class DataLocation(
     val lng: Float
 ) {
     @Id
-    var id = name.hashCode().toLong()
+    var id: Long = 0
 }

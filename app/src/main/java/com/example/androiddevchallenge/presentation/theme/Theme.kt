@@ -15,45 +15,159 @@
  */
 package com.example.androiddevchallenge.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material.Typography
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
+import com.example.androiddevchallenge.domain.entity.weather.WeatherType
+import com.example.androiddevchallenge.presentation.theme.system.LocalSysUiController
 
-private val DarkColorPalette = darkColors(
-    primary = purple200,
-    primaryVariant = purple700,
-    secondary = teal200
+private val sunColorPalette = CustomColors(
+    background = white,
+    bg_gradient = listOf(white, yellow200),
+    surface = white,
+    primary = yellow600,
+    secondary = yellow400,
+    onBackground = gray800,
+    onSurface = gray500
 )
 
-private val LightColorPalette = lightColors(
-    primary = purple500,
-    primaryVariant = purple700,
-    secondary = teal200
+private val cloudyColorPalette = CustomColors(
+    background = gray200,
+    bg_gradient = listOf(gray200, gray300),
+    surface = white,
+    primary = gray600,
+    secondary = gray400,
+    onBackground = gray800,
+    onSurface = gray500
+)
 
-        /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+private val rainColorPalette = CustomColors(
+    background = blue200,
+    bg_gradient = listOf(blue200, blue300),
+    surface = white,
+    primary = blue600,
+    secondary = blue400,
+    onBackground = gray800,
+    onSurface = gray500
+)
+
+private val snowColorPalette = CustomColors(
+    background = cyan200,
+    bg_gradient = listOf(cyan200, cyan300),
+    surface = white,
+    primary = cyan600,
+    secondary = cyan400,
+    onBackground = gray800,
+    onSurface = gray500
+
+)
+
+private val defaultColorPalette = CustomColors(
+    background = gray200,
+    bg_gradient = listOf(gray200, gray300),
+    surface = white,
+    primary = gray600,
+    secondary = gray400,
+    onBackground = gray800,
+    onSurface = gray500
+
 )
 
 @Composable
-fun MyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
+fun WeatherTheme(
+    type: WeatherType?,
+    content: @Composable() () -> Unit
+) {
+
+    val colors = when (type) {
+        WeatherType.Sun -> sunColorPalette
+        WeatherType.Cloud -> cloudyColorPalette
+        WeatherType.Rain -> rainColorPalette
+        WeatherType.Snow -> snowColorPalette
+        else -> defaultColorPalette
     }
 
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
-        content = content
-    )
+    val sys = LocalSysUiController.current
+    SideEffect {
+        sys.setSystemBarsColor(
+            color = colors.background
+        )
+    }
+    ProvideCustomColors(colors = colors) {
+        MaterialTheme(
+            typography = typography,
+            shapes = shapes,
+            content = content
+        )
+    }
+
+}
+
+object AppTheme {
+    val colors: CustomColors
+        @Composable
+        get() = LocalCustomColors.current
+
+    val typography: Typography
+        @Composable
+        get() = MaterialTheme.typography
+}
+
+@Stable
+class CustomColors(
+    background: Color,
+    bg_gradient: List<Color>,
+    surface: Color,
+    primary: Color,
+    secondary: Color,
+    onBackground: Color,
+    onSurface: Color
+) {
+    var background by mutableStateOf(background)
+        private set
+    var bg_gradient by mutableStateOf(bg_gradient)
+        private set
+    var surface by mutableStateOf(surface)
+        private set
+    var primary by mutableStateOf(primary)
+        private set
+    var secondary by mutableStateOf(secondary)
+        private set
+    var onBackground by mutableStateOf(onBackground)
+        private set
+    var onSurface by mutableStateOf(onSurface)
+        private set
+
+    fun update(other: CustomColors) {
+        background = other.background
+        bg_gradient = other.bg_gradient
+        surface = other.surface
+        primary = other.primary
+        secondary = other.secondary
+        onBackground = other.onBackground
+        onSurface = other.onSurface
+    }
+}
+
+@Composable
+fun ProvideCustomColors(
+    colors: CustomColors,
+    content: @Composable () -> Unit
+) {
+    val colorPalette = remember { colors }
+    colorPalette.update(colors)
+    CompositionLocalProvider(LocalCustomColors provides colorPalette, content = content)
+}
+
+private val LocalCustomColors = staticCompositionLocalOf<CustomColors> {
+    error("No JetsnackColorPalette provided")
 }

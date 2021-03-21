@@ -4,8 +4,9 @@ import com.example.androiddevchallenge.domain.bridge.WeatherRepository
 import com.example.androiddevchallenge.domain.entity.location.Location
 import com.example.androiddevchallenge.domain.entity.weather.Weather
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class GetForecastInfoForLocationUseCase(
+class GetForecastInfoForLocationUseCase @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) {
 

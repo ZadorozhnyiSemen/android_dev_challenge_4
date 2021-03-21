@@ -24,6 +24,7 @@ class WeatherRepositoryImpl(
         val dataLocation = locationMapper.mapToData(location)
         weatherCache.getWeather(dataLocation)?.let {
             emit(weatherMapper.mapToDomain(it))
+            return@let // API-KEY allows 1000 requests per month. Get from cache if possible
         }
 
         val weatherFromApi = weatherNetworkSource.requestWeather(dataLocation)

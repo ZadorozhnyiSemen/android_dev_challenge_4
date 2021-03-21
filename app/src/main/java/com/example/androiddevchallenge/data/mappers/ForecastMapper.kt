@@ -3,8 +3,12 @@ package com.example.androiddevchallenge.data.mappers
 import com.example.androiddevchallenge.data.entity.DataForecast
 import com.example.androiddevchallenge.domain.entity.weather.Forecast
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
+import com.example.androiddevchallenge.domain.entity.weather.WeekDay
+import java.text.SimpleDateFormat
+import java.util.*
+import javax.inject.Inject
 
-class ForecastMapper : Mapper<DataForecast, Forecast> {
+class ForecastMapper @Inject constructor() : Mapper<DataForecast, Forecast> {
     override fun mapToDomain(dataValue: DataForecast): Forecast {
         val type = when(dataValue.type) {
             "clear" -> WeatherType.Sun
@@ -13,7 +17,25 @@ class ForecastMapper : Mapper<DataForecast, Forecast> {
             "snow", "snowdrifting", "snow-shower", "hail", "snow-hail" -> WeatherType.Snow
             else -> WeatherType.Other
         }
-        return Forecast(dataValue.temperature, type)
+        println(dataValue.time)
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val formatted = format.parse(dataValue.time)
+        val c = Calendar.getInstance()
+        c.time = formatted
+        val dayOfWeek = c[Calendar.DAY_OF_WEEK]
+        val weekDay = when (dayOfWeek) {
+            1 -> WeekDay.Sunday
+            2 -> WeekDay.Monday
+            3 -> WeekDay.Tuesday
+            4 -> WeekDay.Wednesday
+            5 -> WeekDay.Thursday
+            6 -> WeekDay.Friday
+            7 -> WeekDay.Saturday
+            else -> WeekDay.Sunday
+        }
+        val justhour = c[Calendar.HOUR]
+        val ampm = c[Calendar.AM_PM]
+        return Forecast(dataValue.temperature.toInt(), type, weekDay, "${justhour + 1}${if (ampm == 1) "pm" else "am"}")
     }
 
     override fun mapToData(domainValue: Forecast): DataForecast {
@@ -24,7 +46,7 @@ class ForecastMapper : Mapper<DataForecast, Forecast> {
             WeatherType.Snow -> "show"
             WeatherType.Other -> "other"
         }
-        return DataForecast("0", type, domainValue.temperature)
+        return DataForecast("0", type, domainValue.temperature.toFloat())
     }
 
     override fun mapListToDomain(dataValue: List<DataForecast>): List<Forecast> {

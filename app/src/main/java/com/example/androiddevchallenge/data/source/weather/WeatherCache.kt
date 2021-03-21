@@ -2,8 +2,9 @@ package com.example.androiddevchallenge.data.source.weather
 
 import com.example.androiddevchallenge.data.entity.DataLocation
 import com.example.androiddevchallenge.data.entity.DataWeather
+import javax.inject.Inject
 
-class WeatherCache {
+class WeatherCache @Inject constructor() {
     private val weatherCache = mutableMapOf<String, DataWeather>()
 
     fun getWeather(location: DataLocation): DataWeather? {

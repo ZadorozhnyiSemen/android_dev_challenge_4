@@ -30,6 +30,18 @@ sealed class WeatherType {
 }
 
 data class Forecast(
-    val temperature: Float,
-    val type: WeatherType
+    val temperature: Int,
+    val type: WeatherType,
+    val weekDay: WeekDay,
+    val hourOfDay: String
 )
+
+sealed class WeekDay {
+    object Sunday: WeekDay()
+    object Monday: WeekDay()
+    object Tuesday: WeekDay()
+    object Wednesday: WeekDay()
+    object Thursday: WeekDay()
+    object Friday: WeekDay()
+    object Saturday: WeekDay()
+}

@@ -8,8 +8,9 @@ import com.example.androiddevchallenge.domain.entity.weather.Current
 import com.example.androiddevchallenge.domain.entity.weather.Daily
 import com.example.androiddevchallenge.domain.entity.weather.Hourly
 import com.example.androiddevchallenge.domain.entity.weather.Weather
+import javax.inject.Inject
 
-class WeatherMapper(
+class WeatherMapper @Inject constructor(
     private val locationMapper: LocationMapper,
     private val forecastMapper: ForecastMapper
 ): Mapper<DataWeather, Weather> {

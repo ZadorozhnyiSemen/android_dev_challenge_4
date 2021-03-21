@@ -2,8 +2,9 @@ package com.example.androiddevchallenge.data.mappers
 
 import com.example.androiddevchallenge.data.entity.DataLocation
 import com.example.androiddevchallenge.domain.entity.location.Location
+import javax.inject.Inject
 
-class LocationMapper: Mapper<DataLocation, Location> {
+class LocationMapper @Inject constructor(): Mapper<DataLocation, Location> {
 
     override fun mapToDomain(dataValue: DataLocation): Location {
         return Location(dataValue.name, dataValue.country, dataValue.lat, dataValue.lng)

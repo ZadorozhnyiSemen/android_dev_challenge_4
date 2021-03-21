@@ -1,8 +1,9 @@
 package com.example.androiddevchallenge.data.source.location
 
 import com.example.androiddevchallenge.data.entity.DataLocation
+import javax.inject.Inject
 
-class LocationCache {
+class LocationCache @Inject constructor() {
 
     private val cachedLocations = mutableMapOf<String, List<DataLocation>>()
 

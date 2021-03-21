@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:8723490716393262939",
-      "lastPropertyId": "4:6916011321048449729",
+      "lastPropertyId": "5:6720316150622596440",
       "name": "DataLocation",
       "properties": [
         {
@@ -30,6 +30,11 @@
           "name": "lng",
           "type": 7,
           "flags": 4
+        },
+        {
+          "id": "5:6720316150622596440",
+          "name": "country",
+          "type": 9
         }
       ],
       "relations": []
