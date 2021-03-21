@@ -20,7 +20,7 @@ import com.example.androiddevchallenge.domain.entity.weather.Forecast
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
 import com.example.androiddevchallenge.domain.entity.weather.WeekDay
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
 import javax.inject.Inject
 
 class ForecastMapper @Inject constructor() : Mapper<DataForecast, Forecast> {
