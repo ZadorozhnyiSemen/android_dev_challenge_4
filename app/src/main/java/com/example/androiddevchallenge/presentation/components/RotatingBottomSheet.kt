@@ -52,7 +52,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 
 sealed class RotatingBottomSheetState {
     data class Collapsed(val from: RotatingBottomSheetState? = null) : RotatingBottomSheetState()

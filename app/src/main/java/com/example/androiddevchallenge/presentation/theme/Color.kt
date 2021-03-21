@@ -13,30 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
 val white = Color(0xFFFFFFFF)
 
+// Sun palette
 val yellow200 = Color(0xFFFCF3D7)
 val yellow600 = Color(0xFFFFBA35)
 val yellow400 = Color(0x1AFFBA35)
 
+// Cloud palette
 val gray200 = Color(0xFFFCFDFF)
 val gray300 = Color(0xFFDCE3EE)
 val gray600 = Color(0xFFBDC7D1)
 val gray400 = Color(0x1ABDC7D1)
 
+// Rain palette
 val blue200 = Color(0xFFFBFDFF)
 val blue300 = Color(0xFFC6E8FF)
 val blue600 = Color(0xFF6FB1EF)
 val blue400 = Color(0x1A6FB1EF)
 
+// Snow palette
 val cyan200 = Color(0xFFF2FEFF)
 val cyan300 = Color(0xFFB9E9F4)
 val cyan600 = Color(0xFF13D6C9)
 val cyan400 = Color(0x1A13D6C9)
 
+// Text
 val gray800 = Color(0xFF333333)
 val gray500 = Color(0xFFBDBDBD)

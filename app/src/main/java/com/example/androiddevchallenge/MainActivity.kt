@@ -27,15 +27,15 @@ import androidx.compose.runtime.remember
 import androidx.core.view.WindowCompat
 import com.example.androiddevchallenge.presentation.screen.WeatherScreen
 import com.example.androiddevchallenge.presentation.screen.WeatherScreenViewModel
+import com.example.androiddevchallenge.presentation.theme.WeatherTheme
 import com.example.androiddevchallenge.presentation.theme.system.LocalSysUiController
 import com.example.androiddevchallenge.presentation.theme.system.SystemUiController
-import com.example.androiddevchallenge.ui.theme.WeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    val weatherScreenViewModel by viewModels<WeatherScreenViewModel>()
+    private val weatherScreenViewModel by viewModels<WeatherScreenViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             val systemUiController = remember { SystemUiController(window) }
             CompositionLocalProvider(LocalSysUiController provides systemUiController) {
                 ProvideWindowInsets {
-                    MyApp(weatherScreenViewModel)
+                    StormyApp(weatherScreenViewModel)
                 }
             }
         }
@@ -52,14 +52,14 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun MyApp(
+fun StormyApp(
     weatherScreenViewModel: WeatherScreenViewModel,
 ) {
-    val weatherItem by weatherScreenViewModel.selectedItem.observeAsState()
+    val weatherItem by weatherScreenViewModel.forecast.observeAsState()
 
     WeatherTheme(weatherItem?.current?.forecast?.type) {
         WeatherScreen(
-            weatherScreenViewModel.selectedItem,
+            weatherScreenViewModel.forecast,
             weatherScreenViewModel.selectedLocation,
             weatherScreenViewModel.favoriteLocations,
             weatherScreenViewModel.searchResult,

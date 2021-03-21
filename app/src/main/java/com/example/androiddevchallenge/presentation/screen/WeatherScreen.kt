@@ -50,7 +50,7 @@ import com.example.androiddevchallenge.presentation.components.RotatingBottomShe
 import com.example.androiddevchallenge.presentation.components.SearchLocation
 import com.example.androiddevchallenge.presentation.components.Temperature
 import com.example.androiddevchallenge.presentation.components.WeatherBackground
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
@@ -65,9 +65,9 @@ fun WeatherScreen(
     onCityAdded: (Location) -> Unit
 ) {
     val selectedWeather by selectedItem.observeAsState()
-    val selectedItem by selectedLocation.observeAsState()
+    val selectedLocation by selectedLocation.observeAsState()
     val locations by favoriteLocations.observeAsState()
-    val searchResult by searchResult.observeAsState()
+    val searchLocationResults by searchResult.observeAsState()
     val currentSearchQuery by searchQuery.observeAsState()
 
     Surface {
@@ -87,7 +87,7 @@ fun WeatherScreen(
 
             LocationList(
                 locations,
-                selectedItem,
+                selectedLocation,
                 onCitySelected,
                 modifier = Modifier.semantics { heading() })
 
@@ -106,7 +106,7 @@ fun WeatherScreen(
                     .padding(end = 24.dp, top = 84.dp, start = 24.dp),
                 onQueryChanged = onQueryChanged,
                 onCityAdded = onCityAdded,
-                locations = searchResult,
+                locations = searchLocationResults,
                 query = currentSearchQuery
             )
 
@@ -114,9 +114,7 @@ fun WeatherScreen(
                 leftIcon = {
                     Icon(
                         modifier = Modifier
-                            .clip(
-                                CircleShape
-                            )
+                            .clip(CircleShape)
                             .background(AppTheme.colors.secondary)
                             .size(56.dp)
                             .padding(16.dp),
@@ -137,9 +135,7 @@ fun WeatherScreen(
                 rightIcon = {
                     Icon(
                         modifier = Modifier
-                            .clip(
-                                CircleShape
-                            )
+                            .clip(CircleShape)
                             .background(AppTheme.colors.secondary)
                             .size(56.dp)
                             .padding(16.dp),
@@ -160,9 +156,7 @@ fun WeatherScreen(
                 closeIcon = {
                     Icon(
                         modifier = Modifier
-                            .clip(
-                                CircleShape
-                            )
+                            .clip(CircleShape)
                             .background(AppTheme.colors.secondary)
                             .size(56.dp)
                             .padding(16.dp),
@@ -175,7 +169,7 @@ fun WeatherScreen(
                 title = {
                     Text(
                         modifier = Modifier.clearAndSetSemantics {},
-                        text = "Weather details",
+                        text = stringResource(id = R.string.cd_weather_details),
                         style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface)
                     )
                 },

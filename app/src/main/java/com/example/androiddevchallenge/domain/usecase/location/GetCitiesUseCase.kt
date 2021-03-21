@@ -21,6 +21,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import javax.inject.Inject
 
+/**
+ * Domain use case.
+ *
+ * Logic:
+ * Load locations by given query.
+ *
+ * If query size less or equal 4 then return empty result.
+ * Optimization for https://www.troposphere.io/ limited api quota. (~420 request left)
+ */
 class GetCitiesUseCase @Inject constructor(
     private val locationRepository: LocationRepository
 ) {

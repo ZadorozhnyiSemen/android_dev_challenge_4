@@ -21,5 +21,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {
 
+    /**
+     * Load weather forecast for given [location]
+     *
+     * @return [Flow] of weather
+     */
     suspend fun loadWeatherForecast(location: Location): Flow<Weather>
 }

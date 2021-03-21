@@ -21,6 +21,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+/**
+ * Domain use case.
+ *
+ * Logic:
+ * Load locations witch user added at some point.
+ *
+ * Beforehand mark them as not selected. (User should select them)
+ */
 class GetFavoriteLocationsUseCase @Inject constructor(
     private val userPreferencesRepository: UserPreferencesRepository
 ) {

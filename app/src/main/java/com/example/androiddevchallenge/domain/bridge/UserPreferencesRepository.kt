@@ -20,7 +20,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserPreferencesRepository {
 
+    /**
+     * Get locations selected as favorite by user
+     *
+     * @return [Flow] of selected places
+     */
     suspend fun getUserLocations(): Flow<List<Location>>
 
+    /**
+     * Mark location as selected by user
+     */
     suspend fun addLocation(location: Location)
 }

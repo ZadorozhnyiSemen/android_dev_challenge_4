@@ -38,12 +38,12 @@ class WeatherScreenViewModel @Inject constructor(
     private val getFavoritesUseCase: GetFavoriteLocationsUseCase
 ) : ViewModel() {
 
-    private val _selectedItem = MutableLiveData<Weather>()
+    private val _forecast = MutableLiveData<Weather>()
     private val _selectedLocation = MutableLiveData<Location>()
     private val _searchResult = MutableLiveData<List<Location>>(emptyList())
     private val _searchQuery = MutableLiveData("")
     private val _favoriteLocations = MutableLiveData<List<Location>>(emptyList())
-    val selectedItem: LiveData<Weather> = _selectedItem
+    val forecast: LiveData<Weather> = _forecast
     val selectedLocation: LiveData<Location> = _selectedLocation
     val searchResult: LiveData<List<Location>> = _searchResult
     val searchQuery: LiveData<String> = _searchQuery
@@ -60,13 +60,13 @@ class WeatherScreenViewModel @Inject constructor(
     }
 
     fun onCitySelected(location: Location) {
-        println("Selected location $location")
         viewModelScope.launch {
-            getForecastInfoForLocationUseCase.invoke(location).collect {
-                it.location.selected = true
-                _selectedItem.value = it
-                _selectedLocation.value = location
-            }
+            getForecastInfoForLocationUseCase.invoke(location)
+                .collect {
+                    it.location.selected = true
+                    _forecast.value = it
+                    _selectedLocation.value = location
+                }
         }
     }
 

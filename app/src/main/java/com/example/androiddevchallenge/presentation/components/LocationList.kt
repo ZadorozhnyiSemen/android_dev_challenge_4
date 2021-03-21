@@ -30,7 +30,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.domain.entity.location.Location
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 
 @Composable
 fun LocationList(

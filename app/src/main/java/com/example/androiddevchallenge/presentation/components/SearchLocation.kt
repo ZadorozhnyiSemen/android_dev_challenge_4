@@ -51,7 +51,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.domain.entity.location.Location
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 
 enum class SearchLocationState { Expanded, Collapsed }
 

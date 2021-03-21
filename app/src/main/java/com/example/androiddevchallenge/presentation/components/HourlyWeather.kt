@@ -36,7 +36,7 @@ import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.domain.entity.weather.Forecast
 import com.example.androiddevchallenge.domain.entity.weather.Hourly
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 
 @Composable
 fun HourlyWeather(

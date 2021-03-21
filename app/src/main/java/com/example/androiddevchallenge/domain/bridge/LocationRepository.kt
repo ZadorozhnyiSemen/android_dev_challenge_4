@@ -20,5 +20,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocationRepository {
 
+    /**
+     * Search places by given [query]
+     *
+     * @return [Flow] of places
+     */
     fun searchPlaces(query: String): Flow<List<Location>>
 }

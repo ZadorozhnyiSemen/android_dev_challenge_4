@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.ui.theme
+package com.example.androiddevchallenge.presentation.theme
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
@@ -29,6 +29,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
 import com.example.androiddevchallenge.presentation.theme.system.LocalSysUiController
+import com.example.androiddevchallenge.ui.theme.typography
 
 private val sunColorPalette = CustomColors(
     background = white,
@@ -105,7 +106,6 @@ fun WeatherTheme(
     ProvideCustomColors(colors = colors) {
         MaterialTheme(
             typography = typography,
-            shapes = shapes,
             content = content
         )
     }
@@ -168,5 +168,5 @@ fun ProvideCustomColors(
 }
 
 private val LocalCustomColors = staticCompositionLocalOf<CustomColors> {
-    error("No JetsnackColorPalette provided")
+    error("ColorPalette not provided")
 }

@@ -37,7 +37,7 @@ import com.example.androiddevchallenge.domain.entity.weather.Daily
 import com.example.androiddevchallenge.domain.entity.weather.Forecast
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
 import com.example.androiddevchallenge.domain.entity.weather.WeekDay
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 
 @Composable
 fun DailyWeather(

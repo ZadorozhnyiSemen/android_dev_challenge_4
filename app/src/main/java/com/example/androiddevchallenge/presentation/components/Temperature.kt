@@ -24,7 +24,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.domain.entity.weather.Forecast
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
-import com.example.androiddevchallenge.ui.theme.AppTheme
+import com.example.androiddevchallenge.presentation.theme.AppTheme
 
 @Composable
 fun Temperature(

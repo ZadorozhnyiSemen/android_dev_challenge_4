@@ -21,6 +21,13 @@ import com.example.androiddevchallenge.domain.entity.weather.Weather
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+/**
+ * Domain use case.
+ *
+ * Logic:
+ * Load complete information about weather forecast for given location.
+ *
+ */
 class GetForecastInfoForLocationUseCase @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) {

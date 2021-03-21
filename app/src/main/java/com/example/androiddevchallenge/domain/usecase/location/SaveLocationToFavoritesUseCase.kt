@@ -19,6 +19,13 @@ import com.example.androiddevchallenge.domain.bridge.UserPreferencesRepository
 import com.example.androiddevchallenge.domain.entity.location.Location
 import javax.inject.Inject
 
+/**
+ * Domain use case.
+ *
+ * Logic:
+ * Save location chosen by user
+ *
+ */
 class SaveLocationToFavoritesUseCase @Inject constructor(
     private val userPreferencesRepository: UserPreferencesRepository
 ) {
