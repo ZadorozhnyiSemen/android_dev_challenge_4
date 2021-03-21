@@ -89,7 +89,8 @@ fun WeatherScreen(
                 locations,
                 selectedLocation,
                 onCitySelected,
-                modifier = Modifier.semantics { heading() })
+                modifier = Modifier.semantics { heading() }
+            )
 
             selectedWeather?.let {
                 Temperature(
