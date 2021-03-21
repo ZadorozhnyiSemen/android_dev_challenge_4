@@ -50,7 +50,9 @@ fun WeatherBackground(
             modifier = bgModifier
                 .fillMaxWidth()
                 .align(alignment = Alignment.BottomCenter),
-            painter = painterResource(id = background), contentDescription = null, contentScale = ContentScale.FillBounds
+            painter = painterResource(id = background),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds
         )
         PersonImage(forecast = forecast, modifier = Modifier.align(Alignment.BottomEnd))
     }
@@ -63,35 +65,35 @@ fun PersonImage(
 ) {
     val image = when (forecast?.type) {
         WeatherType.Cloud -> {
-            when {
-                forecast.temperature in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_clouds
-                forecast.temperature in (0 until 10) -> R.drawable.ic_temp_0_10_weather_clouds
-                forecast.temperature in (10 until 20) -> R.drawable.ic_temp_10_20_weather_clouds
-                forecast.temperature in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_clouds
+            when (forecast.temperature) {
+                in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_clouds
+                in (0 until 10) -> R.drawable.ic_temp_0_10_weather_clouds
+                in (10 until 20) -> R.drawable.ic_temp_10_20_weather_clouds
+                in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_clouds
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }
         WeatherType.Rain -> {
-            when {
-                forecast.temperature in (Int.MIN_VALUE until 10) -> R.drawable.ic_temp_0_10_weather_rain
-                forecast.temperature in (10 until 20) -> R.drawable.ic_temp_10_20_weather_rain
-                forecast.temperature in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_rain
+            when (forecast.temperature) {
+                in (Int.MIN_VALUE until 10) -> R.drawable.ic_temp_0_10_weather_rain
+                in (10 until 20) -> R.drawable.ic_temp_10_20_weather_rain
+                in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_rain
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }
         WeatherType.Snow -> {
-            when {
-                forecast.temperature in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_snow
-                forecast.temperature in (0..Int.MAX_VALUE) -> R.drawable.ic_temp_0_10_weather_snow
+            when (forecast.temperature) {
+                in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_snow
+                in (0..Int.MAX_VALUE) -> R.drawable.ic_temp_0_10_weather_snow
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }
         WeatherType.Sun -> {
-            when {
-                forecast.temperature in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_sun
-                forecast.temperature in (0 until 10) -> R.drawable.ic_temp_0_10_weather_sun
-                forecast.temperature in (10 until 20) -> R.drawable.ic_temp_10_20_weather_sun
-                forecast.temperature in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_sun
+            when (forecast.temperature) {
+                in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_sun
+                in (0 until 10) -> R.drawable.ic_temp_0_10_weather_sun
+                in (10 until 20) -> R.drawable.ic_temp_10_20_weather_sun
+                in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_sun
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }
