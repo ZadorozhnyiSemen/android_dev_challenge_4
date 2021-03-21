@@ -109,7 +109,6 @@ fun WeatherTheme(
             content = content
         )
     }
-
 }
 
 object AppTheme {

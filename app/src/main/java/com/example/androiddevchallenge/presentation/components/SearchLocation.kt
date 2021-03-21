@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.presentation.components
 
 import androidx.compose.animation.animateContentSize
@@ -57,57 +72,79 @@ fun SearchLocation(
         Box(
             Modifier
                 .background(AppTheme.colors.surface)
-                .animateContentSize()) {
+                .animateContentSize()
+        ) {
             when (state) {
                 SearchLocationState.Expanded -> {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
                         Row(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
                             Icon(painter = painterResource(id = R.drawable.ic_search), contentDescription = null)
                             Spacer(modifier = Modifier.width(12.dp))
-                            BasicTextField(modifier = Modifier
-                                .weight(2f)
-                                .focusRequester(focusRequester), value = query ?: "", onValueChange = {
-                                onQueryChanged(it)
-                            }, textStyle = AppTheme.typography.button.copy(AppTheme.colors.onBackground))
+                            BasicTextField(
+                                modifier = Modifier
+                                    .weight(2f)
+                                    .focusRequester(focusRequester),
+                                value = query ?: "",
+                                onValueChange = {
+                                    onQueryChanged(it)
+                                },
+                                textStyle = AppTheme.typography.button.copy(AppTheme.colors.onBackground)
+                            )
                             DisposableEffect("") {
                                 focusRequester.requestFocus()
                                 onDispose { }
                             }
                             Spacer(modifier = Modifier.width(12.dp))
-                            Icon(modifier = Modifier.clickable { state = SearchLocationState.Collapsed }, painter = painterResource(id = R.drawable.ic_cross), contentDescription = stringResource(
-                                id = R.string.cd_icon_close_search
-                            ))
+                            Icon(
+                                modifier = Modifier.clickable { state = SearchLocationState.Collapsed }, painter = painterResource(id = R.drawable.ic_cross),
+                                contentDescription = stringResource(
+                                    id = R.string.cd_icon_close_search
+                                )
+                            )
                         }
-                        Divider(color = AppTheme.colors.secondary, modifier = Modifier
-                            .fillMaxWidth()
-                            .width(1.dp))
+                        Divider(
+                            color = AppTheme.colors.secondary,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .width(1.dp)
+                        )
                         locations?.let {
                             if (it.isEmpty()) {
-                                Text(modifier = Modifier
-                                    .padding(vertical = 4.dp)
-                                    .align(Alignment.CenterHorizontally), text = "Start typing to search", style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface))
+                                Text(
+                                    modifier = Modifier
+                                        .padding(vertical = 4.dp)
+                                        .align(Alignment.CenterHorizontally),
+                                    text = "Start typing to search", style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface)
+                                )
                             } else {
-                                LazyColumn(Modifier.heightIn(max = 400.dp),verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                LazyColumn(Modifier.heightIn(max = 400.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                     items(locations) { location ->
-                                        Text(modifier = Modifier
-                                            .clickable {
-                                                onCityAdded(location)
-                                                state = SearchLocationState.Collapsed
-                                            }
-                                            .fillMaxWidth()
-                                            .padding(vertical = 8.dp, horizontal = 8.dp), text = "${location.name}, ${location.country}", style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
+                                        Text(
+                                            modifier = Modifier
+                                                .clickable {
+                                                    onCityAdded(location)
+                                                    state = SearchLocationState.Collapsed
+                                                }
+                                                .fillMaxWidth()
+                                                .padding(vertical = 8.dp, horizontal = 8.dp),
+                                            text = "${location.name}, ${location.country}", style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground)
+                                        )
                                     }
                                 }
                             }
                         }
                     }
-
                 }
                 SearchLocationState.Collapsed -> {
-                    Icon(modifier = Modifier
-                        .clickable { state = SearchLocationState.Expanded }
-                        .padding(8.dp),painter = painterResource(id = R.drawable.ic_add), contentDescription = "Add new city")
+                    Icon(
+                        modifier = Modifier
+                            .clickable { state = SearchLocationState.Expanded }
+                            .padding(8.dp),
+                        painter = painterResource(id = R.drawable.ic_add), contentDescription = "Add new city"
+                    )
                 }
             }
         }

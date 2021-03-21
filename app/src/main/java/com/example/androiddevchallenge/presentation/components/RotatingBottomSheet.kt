@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.presentation.components
 
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -140,17 +155,22 @@ fun RotatingBottomSheet(
                     .semantics { contentDescription = cd }
                     .semantics { heading() }
                     .padding(32.dp)
-                    .align(Alignment.BottomCenter), horizontalArrangement = Arrangement.SpaceBetween,verticalAlignment = Alignment.CenterVertically
+                    .align(Alignment.BottomCenter),
+                horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically
             ) {
-                Box(modifier = Modifier
-                    .clip(CircleShape)
-                    .clickable {
-                        state = RotatingBottomSheetState.LeftExpanded
-                    }) { leftIcon() }
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .clickable {
+                            state = RotatingBottomSheetState.LeftExpanded
+                        }
+                ) { leftIcon() }
                 title()
-                Box(modifier = Modifier.clickable {
-                    state = RotatingBottomSheetState.RightExpanded
-                }) { rightIcon() }
+                Box(
+                    modifier = Modifier.clickable {
+                        state = RotatingBottomSheetState.RightExpanded
+                    }
+                ) { rightIcon() }
             }
         }
 
@@ -159,7 +179,7 @@ fun RotatingBottomSheet(
             closeVisibility != 1f ||
             state == RotatingBottomSheetState.RightExpanded && openVisibility == 1f
         ) {
-            //left
+            // left
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -168,15 +188,17 @@ fun RotatingBottomSheet(
                     .clip(RoundedCornerShape(64.dp))
                     .background(AppTheme.colors.surface)
             ) {
-                Box(modifier = Modifier
-                    .clip(CircleShape)
-                    .padding(32.dp)
-                    .clip(CircleShape)
-                    .clickable {
-                        state =
-                            RotatingBottomSheetState.Collapsed(RotatingBottomSheetState.RightExpanded)
-                    }
-                    .align(Alignment.TopStart)) {
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .padding(32.dp)
+                        .clip(CircleShape)
+                        .clickable {
+                            state =
+                                RotatingBottomSheetState.Collapsed(RotatingBottomSheetState.RightExpanded)
+                        }
+                        .align(Alignment.TopStart)
+                ) {
                     closeIcon()
                 }
                 Box(
@@ -187,11 +209,14 @@ fun RotatingBottomSheet(
                 ) {
                     rightContent()
                 }
-                Divider(modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .padding(start = 120.dp)
-                    .width(1.dp)
-                    .fillMaxHeight(), color = AppTheme.colors.secondary)
+                Divider(
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 120.dp)
+                        .width(1.dp)
+                        .fillMaxHeight(),
+                    color = AppTheme.colors.secondary
+                )
             }
         }
 
@@ -200,7 +225,7 @@ fun RotatingBottomSheet(
             closeVisibility != 1f ||
             state == RotatingBottomSheetState.LeftExpanded && openVisibility == 1f
         ) {
-            //left
+            // left
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -209,14 +234,16 @@ fun RotatingBottomSheet(
                     .clip(RoundedCornerShape(64.dp))
                     .background(AppTheme.colors.surface)
             ) {
-                Box(modifier = Modifier
-                    .padding(32.dp)
-                    .clip(CircleShape)
-                    .clickable {
-                        state =
-                            RotatingBottomSheetState.Collapsed(RotatingBottomSheetState.LeftExpanded)
-                    }
-                    .align(Alignment.TopEnd)) {
+                Box(
+                    modifier = Modifier
+                        .padding(32.dp)
+                        .clip(CircleShape)
+                        .clickable {
+                            state =
+                                RotatingBottomSheetState.Collapsed(RotatingBottomSheetState.LeftExpanded)
+                        }
+                        .align(Alignment.TopEnd)
+                ) {
                     closeIcon()
                 }
                 Box(
@@ -227,11 +254,14 @@ fun RotatingBottomSheet(
                 ) {
                     leftContent()
                 }
-                Divider(modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(end = 120.dp)
-                    .width(1.dp)
-                    .fillMaxHeight(), color = AppTheme.colors.secondary)
+                Divider(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(end = 120.dp)
+                        .width(1.dp)
+                        .fillMaxHeight(),
+                    color = AppTheme.colors.secondary
+                )
             }
         }
     }

@@ -1,8 +1,25 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,9 +43,13 @@ fun HourlyWeather(
     hourly: Hourly?,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = modifier, verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        items(hourly?.hourlyForecast ?: emptyList()) {item ->
-            HourlyItem(hourlyForecast = item)
+    Column(modifier = modifier) {
+        Text(text = "From today", style = AppTheme.typography.h2.copy(color = AppTheme.colors.onBackground))
+        Spacer(modifier = Modifier.height(20.dp))
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            items(hourly?.hourlyForecast ?: emptyList()) { item ->
+                HourlyItem(hourlyForecast = item)
+            }
         }
     }
 }
@@ -54,11 +75,11 @@ fun HourlyItem(
 
     val cdFull = "${hourlyForecast.hourOfDay} $weatherContentDescription ${hourlyForecast.temperature}°"
 
-    Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.semantics(true){contentDescription = cdFull}) {
-        Text(modifier = Modifier.weight(2f), text = hourlyForecast.hourOfDay)
+    Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.semantics(true) { contentDescription = cdFull }) {
+        Text(modifier = Modifier.weight(2f), text = hourlyForecast.hourOfDay, style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
         Spacer(modifier = Modifier.width(42.dp))
         Icon(painter = painterResource(id = iconRes), tint = AppTheme.colors.primary, contentDescription = null)
         Spacer(modifier = Modifier.width(42.dp))
-        Text("${hourlyForecast.temperature}°")
+        Text("${hourlyForecast.temperature}°", style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
     }
 }
