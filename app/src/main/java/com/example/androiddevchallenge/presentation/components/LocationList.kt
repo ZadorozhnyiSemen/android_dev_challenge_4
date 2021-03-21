@@ -50,9 +50,7 @@ fun LocationList(
                     location = location,
                     selected = location == selected,
                     modifier = Modifier
-                        .clickable {
-                            onClick(location)
-                        }
+                        .clickable { onClick(location) }
                         .background(AppTheme.colors.surface)
                         .padding(vertical = 12.dp, horizontal = 24.dp)
                 )
@@ -75,6 +73,10 @@ fun LocationItem(
         elevation = 2.dp,
         border = border
     ) {
-        Text(modifier = modifier, text = location.name, style = AppTheme.typography.button.copy(color = color))
+        Text(
+            modifier = modifier,
+            text = location.name,
+            style = AppTheme.typography.button.copy(color = color)
+        )
     }
 }

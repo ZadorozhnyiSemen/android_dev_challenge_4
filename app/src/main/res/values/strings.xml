@@ -11,17 +11,6 @@
       -->
     <string name="app_name">Stormy application</string>
 
-    <string name="today">Today</string>
-    <string name="tomorrow">Tomorrow</string>
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="saturday">Saturday</string>
-    <string name="friday">Friday</string>
-    <string name="sunday">Sunday</string>
-    <string name="weather_details">Weather details</string>
-
     <!-- Content description -->
     <string name="cd_weather_sun">Sunny</string>
     <string name="cd_weather_rain">Rain</string>
@@ -34,4 +23,24 @@
     <string name="cd_icon_daily">Daily forecast</string>
     <string name="cd_icon_close">Close weather details</string>
     <string name="cd_icon_close_search">Close search</string>
+    <string name="cd_add_location">Add new city</string>
+
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="saturday">Saturday</string>
+    <string name="friday">Friday</string>
+    <string name="sunday">Sunday</string>
+    <string name="weather_details">Weather details</string>
+    <string name="weather_sun">Sunny</string>
+    <string name="weather_rain">Rain</string>
+    <string name="weather_snow">Snow</string>
+    <string name="weather_clouds">Cloudy</string>
+    <string name="query_hint">Start typing to search</string>
+    <string name="from_today">From today</string>
+    <string name="seven_days">Next 7 days</string>
+
 </resources>

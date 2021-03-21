@@ -20,8 +20,10 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.domain.entity.weather.Forecast
 import com.example.androiddevchallenge.domain.entity.weather.WeatherType
 import com.example.androiddevchallenge.presentation.theme.AppTheme
@@ -32,11 +34,11 @@ fun Temperature(
     modifier: Modifier = Modifier
 ) {
     val forecastType = when (forecast.type) {
-        WeatherType.Sun -> "Sunny"
-        WeatherType.Cloud -> "Cloudy"
+        WeatherType.Sun -> stringResource(id = R.string.weather_sun)
+        WeatherType.Cloud -> stringResource(id = R.string.weather_clouds)
+        WeatherType.Rain -> stringResource(id = R.string.weather_rain)
+        WeatherType.Snow -> stringResource(id = R.string.cd_weather_snow)
         WeatherType.Other -> ""
-        WeatherType.Rain -> "Rainy"
-        WeatherType.Snow -> "Snowy"
     }
     Row(modifier = modifier.semantics(mergeDescendants = true) {}) {
         Text(
@@ -49,7 +51,7 @@ fun Temperature(
             style = AppTheme.typography.h2.copy(color = AppTheme.colors.onBackground),
             modifier = Modifier
                 .alignByBaseline()
-                .offset(x = -24.dp)
+                .offset(x = (-24).dp)
         )
     }
 }

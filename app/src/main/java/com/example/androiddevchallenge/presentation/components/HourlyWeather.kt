@@ -44,7 +44,7 @@ fun HourlyWeather(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        Text(text = "From today", style = AppTheme.typography.h2.copy(color = AppTheme.colors.onBackground))
+        Text(text = stringResource(R.string.from_today), style = AppTheme.typography.h2.copy(color = AppTheme.colors.onBackground))
         Spacer(modifier = Modifier.height(20.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(14.dp)) {
             items(hourly?.hourlyForecast ?: emptyList()) { item ->

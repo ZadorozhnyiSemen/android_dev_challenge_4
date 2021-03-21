@@ -179,7 +179,6 @@ fun RotatingBottomSheet(
             closeVisibility != 1f ||
             state == RotatingBottomSheetState.RightExpanded && openVisibility == 1f
         ) {
-            // left
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -225,7 +224,6 @@ fun RotatingBottomSheet(
             closeVisibility != 1f ||
             state == RotatingBottomSheetState.LeftExpanded && openVisibility == 1f
         ) {
-            // left
             Box(
                 modifier = Modifier
                     .fillMaxSize()

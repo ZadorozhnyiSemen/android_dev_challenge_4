@@ -45,7 +45,7 @@ fun DailyWeather(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        Text(text = "Next 7 days", style = AppTheme.typography.h2.copy(color = AppTheme.colors.onBackground))
+        Text(text = stringResource(R.string.seven_days), style = AppTheme.typography.h2.copy(color = AppTheme.colors.onBackground))
         Spacer(modifier = Modifier.height(20.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(14.dp)) {
             itemsIndexed(daily?.dailyForecast ?: emptyList()) { index, item ->

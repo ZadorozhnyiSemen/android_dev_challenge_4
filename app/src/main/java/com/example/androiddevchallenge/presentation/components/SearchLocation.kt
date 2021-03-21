@@ -66,7 +66,10 @@ fun SearchLocation(
     var state by remember { mutableStateOf(SearchLocationState.Collapsed) }
     val focusRequester = remember { FocusRequester() }
 
-    val shape = if (state == SearchLocationState.Expanded) RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp) else CircleShape
+    val shape = if (state == SearchLocationState.Expanded) RoundedCornerShape(
+        topStart = 16.dp,
+        topEnd = 16.dp
+    ) else CircleShape
 
     Surface(modifier = modifier, shape = shape, elevation = 2.dp) {
         Box(
@@ -76,33 +79,34 @@ fun SearchLocation(
         ) {
             when (state) {
                 SearchLocationState.Expanded -> {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        Row(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                            Icon(painter = painterResource(id = R.drawable.ic_search), contentDescription = null)
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_search),
+                                contentDescription = null
+                            )
                             Spacer(modifier = Modifier.width(12.dp))
                             BasicTextField(
                                 modifier = Modifier
                                     .weight(2f)
                                     .focusRequester(focusRequester),
                                 value = query ?: "",
-                                onValueChange = {
-                                    onQueryChanged(it)
-                                },
+                                onValueChange = { onQueryChanged(it) },
                                 textStyle = AppTheme.typography.button.copy(AppTheme.colors.onBackground)
                             )
                             DisposableEffect("") {
                                 focusRequester.requestFocus()
-                                onDispose { }
+                                onDispose {}
                             }
                             Spacer(modifier = Modifier.width(12.dp))
                             Icon(
-                                modifier = Modifier.clickable { state = SearchLocationState.Collapsed }, painter = painterResource(id = R.drawable.ic_cross),
-                                contentDescription = stringResource(
-                                    id = R.string.cd_icon_close_search
-                                )
+                                modifier = Modifier.clickable { state = SearchLocationState.Collapsed },
+                                painter = painterResource(id = R.drawable.ic_cross),
+                                contentDescription = stringResource(id = R.string.cd_icon_close_search)
                             )
                         }
                         Divider(
@@ -117,10 +121,14 @@ fun SearchLocation(
                                     modifier = Modifier
                                         .padding(vertical = 4.dp)
                                         .align(Alignment.CenterHorizontally),
-                                    text = "Start typing to search", style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface)
+                                    text = stringResource(R.string.query_hint),
+                                    style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface)
                                 )
                             } else {
-                                LazyColumn(Modifier.heightIn(max = 400.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                LazyColumn(
+                                    Modifier.heightIn(max = 400.dp),
+                                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
                                     items(locations) { location ->
                                         Text(
                                             modifier = Modifier
@@ -130,7 +138,8 @@ fun SearchLocation(
                                                 }
                                                 .fillMaxWidth()
                                                 .padding(vertical = 8.dp, horizontal = 8.dp),
-                                            text = "${location.name}, ${location.country}", style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground)
+                                            text = "${location.name}, ${location.country}",
+                                            style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground)
                                         )
                                     }
                                 }
@@ -143,7 +152,8 @@ fun SearchLocation(
                         modifier = Modifier
                             .clickable { state = SearchLocationState.Expanded }
                             .padding(8.dp),
-                        painter = painterResource(id = R.drawable.ic_add), contentDescription = "Add new city"
+                        painter = painterResource(id = R.drawable.ic_add),
+                        contentDescription = stringResource(R.string.cd_add_location)
                     )
                 }
             }
