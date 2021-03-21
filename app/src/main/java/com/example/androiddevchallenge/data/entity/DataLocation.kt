@@ -27,4 +27,6 @@ data class DataLocation(
 ) {
     @Id
     var id: Long = 0
+
+    fun coordsAsString(): String = "$lat,$lng"
 }

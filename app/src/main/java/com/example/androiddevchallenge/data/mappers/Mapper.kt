@@ -15,13 +15,29 @@
  */
 package com.example.androiddevchallenge.data.mappers
 
+/**
+ * Clean architecture approach.
+ * Mapper for entities between Data and Domain layers
+ */
 interface Mapper<Data, Domain> {
 
+    /**
+     * Map single value to Domain entity
+     */
     fun mapToDomain(dataValue: Data): Domain
 
+    /**
+     * Map single value to Data entity
+     */
     fun mapToData(domainValue: Domain): Data
 
+    /**
+     * Map list to Domain entity list
+     */
     fun mapListToDomain(dataValue: List<Data>): List<Domain>
 
+    /**
+     * Map list to Data entity list
+     */
     fun mapListToData(domainValue: List<Domain>): List<Data>
 }

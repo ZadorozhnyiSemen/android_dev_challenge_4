@@ -19,5 +19,8 @@ import javax.inject.Inject
 
 class ApiKeySource @Inject constructor() {
 
+    /**
+     * https://www.troposphere.io/ api key (here only for demonstration purposes)
+     */
     fun getApiKey(): String = "8a1ab106b5834477c7bc65a00ae4799359805ac5c5c04498fe"
 }

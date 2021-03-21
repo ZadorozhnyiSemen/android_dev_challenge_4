@@ -70,7 +70,7 @@ fun WeatherScreen(
     val searchResult by searchResult.observeAsState()
     val currentSearchQuery by searchQuery.observeAsState()
 
-    Surface() {
+    Surface {
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
@@ -85,7 +85,11 @@ fun WeatherScreen(
                 accompanistModifier = Modifier.align(Alignment.TopEnd)
             )
 
-            LocationList(locations, selectedItem, onCitySelected, modifier = Modifier.semantics { heading() })
+            LocationList(
+                locations,
+                selectedItem,
+                onCitySelected,
+                modifier = Modifier.semantics { heading() })
 
             selectedWeather?.let {
                 Temperature(
@@ -122,7 +126,14 @@ fun WeatherScreen(
                         )
                     )
                 },
-                leftContent = { HourlyWeather(hourly = selectedWeather?.hourly, modifier = Modifier.padding(32.dp).fillMaxWidth()) },
+                leftContent = {
+                    HourlyWeather(
+                        hourly = selectedWeather?.hourly,
+                        modifier = Modifier
+                            .padding(32.dp)
+                            .fillMaxWidth()
+                    )
+                },
                 rightIcon = {
                     Icon(
                         modifier = Modifier
@@ -138,7 +149,14 @@ fun WeatherScreen(
                         )
                     )
                 },
-                rightContent = { DailyWeather(daily = selectedWeather?.daily, modifier = Modifier.padding(32.dp).fillMaxWidth()) },
+                rightContent = {
+                    DailyWeather(
+                        daily = selectedWeather?.daily,
+                        modifier = Modifier
+                            .padding(32.dp)
+                            .fillMaxWidth()
+                    )
+                },
                 closeIcon = {
                     Icon(
                         modifier = Modifier
@@ -155,7 +173,11 @@ fun WeatherScreen(
                     )
                 },
                 title = {
-                    Text(modifier = Modifier.clearAndSetSemantics {}, text = "Weather details", style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface))
+                    Text(
+                        modifier = Modifier.clearAndSetSemantics {},
+                        text = "Weather details",
+                        style = AppTheme.typography.button.copy(color = AppTheme.colors.onSurface)
+                    )
                 },
                 boxSize = maxWidth,
                 modifier = Modifier

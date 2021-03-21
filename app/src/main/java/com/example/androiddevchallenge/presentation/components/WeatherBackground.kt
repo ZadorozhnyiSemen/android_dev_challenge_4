@@ -62,28 +62,36 @@ fun PersonImage(
     modifier: Modifier = Modifier
 ) {
     val image = when (forecast?.type) {
-        WeatherType.Cloud -> R.drawable.ic_temp_20_weather_unknown
+        WeatherType.Cloud -> {
+            when {
+                forecast.temperature in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_clouds
+                forecast.temperature in (0 until 10) -> R.drawable.ic_temp_0_10_weather_clouds
+                forecast.temperature in (10 until 20) -> R.drawable.ic_temp_10_20_weather_clouds
+                forecast.temperature in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_clouds
+                else -> R.drawable.ic_temp_20_weather_unknown
+            }
+        }
         WeatherType.Rain -> {
             when {
-                forecast.temperature.toInt() in (Int.MIN_VALUE..10) -> R.drawable.ic_temp_0_10_weather_rain
-                forecast.temperature.toInt() in (10..20) -> R.drawable.ic_temp_10_20_weather_rain
-                forecast.temperature.toInt() in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_rain
+                forecast.temperature in (Int.MIN_VALUE until 10) -> R.drawable.ic_temp_0_10_weather_rain
+                forecast.temperature in (10 until 20) -> R.drawable.ic_temp_10_20_weather_rain
+                forecast.temperature in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_rain
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }
         WeatherType.Snow -> {
             when {
-                forecast.temperature.toInt() in (Int.MIN_VALUE..0) -> R.drawable.ic_temp_0_weather_snow
-                forecast.temperature.toInt() in (0..Int.MAX_VALUE) -> R.drawable.ic_temp_0_10_weather_snow
+                forecast.temperature in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_snow
+                forecast.temperature in (0..Int.MAX_VALUE) -> R.drawable.ic_temp_0_10_weather_snow
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }
         WeatherType.Sun -> {
             when {
-                forecast.temperature.toInt() in (Int.MIN_VALUE..0) -> R.drawable.ic_temp_0_weather_sun
-                forecast.temperature.toInt() in (0..10) -> R.drawable.ic_temp_0_10_weather_sun
-                forecast.temperature.toInt() in (10..20) -> R.drawable.ic_temp_10_20_weather_sun
-                forecast.temperature.toInt() in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_sun
+                forecast.temperature in (Int.MIN_VALUE until 0) -> R.drawable.ic_temp_0_weather_sun
+                forecast.temperature in (0 until 10) -> R.drawable.ic_temp_0_10_weather_sun
+                forecast.temperature in (10 until 20) -> R.drawable.ic_temp_10_20_weather_sun
+                forecast.temperature in (20..Int.MAX_VALUE) -> R.drawable.ic_temp_20_weather_sun
                 else -> R.drawable.ic_temp_20_weather_unknown
             }
         }

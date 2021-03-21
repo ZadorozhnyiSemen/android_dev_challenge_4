@@ -37,8 +37,7 @@ class ForecastMapper @Inject constructor() : Mapper<DataForecast, Forecast> {
         val formatted = format.parse(dataValue.time)
         val c = Calendar.getInstance()
         c.time = formatted
-        val dayOfWeek = c[Calendar.DAY_OF_WEEK]
-        val weekDay = when (dayOfWeek) {
+        val weekDay = when (c[Calendar.DAY_OF_WEEK]) {
             1 -> WeekDay.Sunday
             2 -> WeekDay.Monday
             3 -> WeekDay.Tuesday

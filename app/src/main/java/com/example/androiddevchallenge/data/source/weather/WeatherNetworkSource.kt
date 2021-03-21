@@ -29,10 +29,8 @@ class WeatherNetworkSource @Inject constructor(
     private val apiKeySource: ApiKeySource
 ) {
 
-    suspend fun requestWeather(dataLocation: DataLocation): DataWeather {
-        val coords = "${dataLocation.lat},${dataLocation.lng}"
-        return weatherApi.getWeather(coords, apiKeySource.getApiKey()).toData(dataLocation)
-    }
+    suspend fun requestWeather(dataLocation: DataLocation): DataWeather =
+        weatherApi.getWeather(dataLocation.coordsAsString(), apiKeySource.getApiKey()).toData(dataLocation)
 }
 
 data class WeatherResponse(
