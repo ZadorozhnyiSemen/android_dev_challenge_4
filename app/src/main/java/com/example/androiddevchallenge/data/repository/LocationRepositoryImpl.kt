@@ -33,7 +33,12 @@ class LocationRepositoryImpl(
 ) : LocationRepository {
 
     override fun searchPlaces(query: String): Flow<List<Location>> = flow {
-        emit(locationMapper.mapListToDomain(cache.load(query)))
+        val cached = cache.load(query)
+        if (cached.isNotEmpty()) {
+            emit(locationMapper.mapListToDomain(cached))
+            return@flow
+        }
+
         val locations = api.getLocationsByName(query)
         cache.save(query, locations)
         emit(locationMapper.mapListToDomain(locations))
