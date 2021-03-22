@@ -195,7 +195,7 @@ fun WeatherAccompanists(
         }
         WeatherType.Snow -> {
             ParticleGenerator(
-                modifier = Modifier.rotate(-15f),
+                modifier = Modifier.rotate(-15f).offset(x = (-40).dp, y = (-40).dp),
                 width = parentWidth,
                 height = parentHeight,
                 animationProperties = ParticleAnimationProperties(verticalXOffset = 32.dp, randomStartDelay = true)

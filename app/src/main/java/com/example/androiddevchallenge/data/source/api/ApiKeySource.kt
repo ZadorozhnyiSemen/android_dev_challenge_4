@@ -22,5 +22,5 @@ class ApiKeySource @Inject constructor() {
     /**
      * https://www.troposphere.io/ api key (here only for demonstration purposes)
      */
-    fun getApiKey(): String = "8a1ab106b5834477c7bc65a00ae4799359805ac5c5c04498fe"
+    fun getApiKey(): String = "c3fddc7e5bcbb29f27360ca987341e0a59a50eb024f0885bfb"
 }
