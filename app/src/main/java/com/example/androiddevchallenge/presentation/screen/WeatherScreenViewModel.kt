@@ -73,6 +73,7 @@ class WeatherScreenViewModel @Inject constructor(
     fun onCityAdded(location: Location) {
         viewModelScope.launch {
             saveLocationToFavoritesUseCase.invoke(location)
+            _searchQuery.value = ""
             getFavoritesUseCase().collect {
                 _favoriteLocations.value = it
             }

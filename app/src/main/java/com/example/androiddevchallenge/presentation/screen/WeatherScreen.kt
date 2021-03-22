@@ -81,8 +81,10 @@ fun WeatherScreen(
                 forecast = selectedWeather?.current?.forecast,
                 modifier = Modifier
                     .fillMaxSize(),
+                parentWidth = maxWidth,
+                parentHeight = maxHeight,
                 bgModifier = Modifier.padding(bottom = 120.dp),
-                accompanistModifier = Modifier.align(Alignment.TopEnd)
+                accompanistModifier = Modifier.align(Alignment.Center)
             )
 
             LocationList(
@@ -104,7 +106,7 @@ fun WeatherScreen(
             SearchLocation(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(end = 24.dp, top = 84.dp, start = 24.dp),
+                    .padding(end = 24.dp, top = 98.dp, start = 24.dp),
                 onQueryChanged = onQueryChanged,
                 onCityAdded = onCityAdded,
                 locations = searchLocationResults,

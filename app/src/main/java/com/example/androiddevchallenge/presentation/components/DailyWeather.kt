@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,6 +32,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.domain.entity.weather.Daily
@@ -90,11 +92,9 @@ fun DailyItem(
 
     val cdFull = "$weekName $weatherContentDescription ${dailyForecast.temperature}°"
 
-    Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.semantics(true) { contentDescription = cdFull }) {
-        Text(modifier = Modifier.weight(2f), text = weekName, style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
-        Spacer(modifier = Modifier.width(42.dp))
+    Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.semantics(true) { contentDescription = cdFull }.fillMaxWidth()) {
+        Text(modifier = Modifier.width(82.dp), text = weekName, maxLines = 1, overflow = TextOverflow.Ellipsis, style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
         Icon(painter = painterResource(id = iconRes), tint = AppTheme.colors.primary, contentDescription = null)
-        Spacer(modifier = Modifier.width(42.dp))
-        Text("${dailyForecast.temperature}°", style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
+        Text(modifier = Modifier.width(40.dp), text = "${dailyForecast.temperature}°", style = AppTheme.typography.button.copy(color = AppTheme.colors.onBackground))
     }
 }

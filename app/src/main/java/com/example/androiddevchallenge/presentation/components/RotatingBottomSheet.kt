@@ -159,17 +159,17 @@ fun RotatingBottomSheet(
                 horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
-                    modifier = Modifier
-                        .clip(CircleShape)
+                    modifier = Modifier.clip(CircleShape)
                         .clickable {
                             state = RotatingBottomSheetState.LeftExpanded
                         }
                 ) { leftIcon() }
                 title()
                 Box(
-                    modifier = Modifier.clickable {
-                        state = RotatingBottomSheetState.RightExpanded
-                    }
+                    modifier = Modifier.clip(CircleShape)
+                        .clickable {
+                            state = RotatingBottomSheetState.RightExpanded
+                        }
                 ) { rightIcon() }
             }
         }
