@@ -7,25 +7,25 @@
 
 ## :scroll: Description
 Weather app completed using:
--JetpackCompose
--Hilt
--Coroutines
--Clean architecture
--Android MVVM
--Retrofit
--ObjectBox
+1. JetpackCompose
+2. Hilt
+3. Coroutines
+4. Clean architecture
+5. Android MVVM
+6. Retrofit
+7. ObjectBox
 
 Data provided by https://www.troposphere.io/
-
 
 ## :bulb: Features and approaches
 1. Current/weekly/hourly weather forecast
 2. Location(city) search
-3. Database storage for user preferences
-4. In-memory storage for forecasts and search results
-5. Custom bottom sheet
-6. Accessibility focus
-7. Unit tests for domain and data layers
+3. Custom bottom sheet
+4. Particle generator (rain/snow/clouds)
+5. Database storage for user preferences
+6. In-memory storage for forecasts and search results
+7. Accessibility focus
+8. Unit tests for domain and data layers
 
 
 ## :camera_flash: Screenshots
